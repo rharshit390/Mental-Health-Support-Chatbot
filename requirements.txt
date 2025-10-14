@@ -1,0 +1,9 @@
+tensorflow>=2.8.0
+nltk>=3.6.5
+numpy>=1.21.0
+flask>=2.0.0
+keras>=2.8.0
+scikit-learn>=1.0.0
+google-generativeai>=0.3.0
+python-dotenv>=1.0.0
+gunicorn>=23.0.0

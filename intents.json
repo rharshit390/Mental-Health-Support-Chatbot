@@ -1,0 +1,255 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hey",
+        "How are you",
+        "Is anyone there?",
+        "Hello",
+        "Good day",
+        "Hi there",
+        "Hey there",
+        "Good morning",
+        "Good afternoon",
+        "Good evening",
+        "What's up",
+        "Howdy",
+        "Greetings",
+        "Hello there",
+        "Hi everyone",
+        "Hey buddy",
+        "Hello friend"
+      ],
+      "responses": [
+        "Hey :-)",
+        "Hello, thanks for visiting",
+        "Hi there, what can I do for you?",
+        "Hi there, how can I help?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "See you later",
+        "Goodbye",
+        "See you soon",
+        "Take care",
+        "Farewell",
+        "Bye bye",
+        "See ya",
+        "Later",
+        "Catch you later",
+        "Have a good day",
+        "Until next time",
+        "Adios",
+        "Ciao"
+      ],
+      "responses": [
+        "See you later, thanks for visiting",
+        "Have a nice day",
+        "Bye! Come back again soon."
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thanks",
+        "Thank you",
+        "That's helpful",
+        "Thanks a lot!",
+        "I appreciate it",
+        "Thank you so much",
+        "Thanks for your help",
+        "Much appreciated",
+        "Grateful",
+        "Thanks buddy",
+        "Thank you kindly",
+        "I owe you one"
+      ],
+      "responses": ["Happy to help!", "Any time!", "My pleasure"]
+    },
+    {
+      "tag": "noanswer",
+      "patterns": [],
+      "responses": [
+        "Sorry, can't understand you",
+        "Please give me more info",
+        "Not sure I understand"
+      ]
+    },
+    {
+      "tag": "stress",
+      "patterns": [
+        "I am stressed",
+        "I have too much pressure",
+        "I feel overwhelmed",
+        "Work is stressing me out",
+        "I'm under a lot of stress",
+        "Everything is stressing me",
+        "I can't handle the pressure",
+        "I'm feeling stressed",
+        "Stress is killing me",
+        "Too much on my plate",
+        "I feel pressured",
+        "I'm stressed out",
+        "Life is stressful",
+        "I'm overwhelmed with work",
+        "I have stress",
+        "Feeling stressed",
+        "Under stress",
+        "Stressed about everything"
+      ],
+      "responses": [
+        "I understand stress can be challenging. Try taking deep breaths and breaking tasks into smaller steps.",
+        "Stress is tough. Remember to take breaks and practice self-care.",
+        "When feeling stressed, try mindfulness exercises or going for a short walk.",
+        "Stress can feel overwhelming. What specific things are causing you stress right now?",
+        "It's normal to feel stressed sometimes. Consider prioritizing your tasks and delegating if possible.",
+        "Try progressive muscle relaxation: Tense and release each muscle group to release tension."
+      ]
+    },
+    {
+      "tag": "anxiety",
+      "patterns": [
+        "I feel anxious",
+        "I'm having anxiety",
+        "I'm worried about everything",
+        "I can't stop worrying",
+        "I'm anxious",
+        "Feeling anxious",
+        "Anxiety is bad",
+        "I'm worried",
+        "Constant worry",
+        "I have anxiety",
+        "Anxious feelings",
+        "I'm freaking out",
+        "Panic attacks",
+        "Heart racing",
+        "Can't calm down",
+        "Worried sick",
+        "Anxious thoughts",
+        "Feeling nervous",
+        "Restless mind"
+      ],
+      "responses": [
+        "Anxiety can be difficult. Try grounding techniques like the 5-4-3-2-1 method.",
+        "Remember that anxious feelings will pass. Focus on your breathing.",
+        "It's okay to feel anxious. Try to identify what's triggering these feelings.",
+        "I hear that you're feeling anxious. What specifically is worrying you right now?",
+        "Anxiety is tough, but you're not alone. Consider talking to a trusted friend or professional.",
+        "Try this: Inhale for 4 counts, hold for 4, exhale for 4. It can help calm the nervous system."
+      ]
+    },
+    {
+      "tag": "depression",
+      "patterns": [
+        "I feel sad",
+        "I'm depressed",
+        "Nothing brings me joy",
+        "I feel hopeless",
+        "I'm sad",
+        "Feeling down",
+        "Depressed mood",
+        "No motivation",
+        "Everything is bleak",
+        "I feel empty",
+        "Lost interest",
+        "Feeling worthless",
+        "Depression",
+        "Sad all the time",
+        "No energy",
+        "Feeling blue",
+        "Hopeless",
+        "Despair",
+        "Low mood",
+        "Unhappy"
+      ],
+      "responses": [
+        "I'm sorry you're feeling this way. Remember that depression lies - these feelings won't last forever.",
+        "It takes courage to talk about depression. Consider reaching out to a mental health professional.",
+        "You're not alone in this. Small steps like getting outside or talking to a friend can help.",
+        "Depression can make everything feel heavy. What small thing could you do today to care for yourself?",
+        "These feelings are valid, and they don't define you. Therapy or counseling can provide tools to manage them.",
+        "Even on tough days, you're worthy of kindness. Consider activities that used to bring you joy, even if just a little."
+      ]
+    },
+    {
+      "tag": "loneliness",
+      "patterns": [
+        "I feel lonely",
+        "No one cares about me",
+        "I'm all alone",
+        "I have no friends",
+        "Feeling isolated",
+        "Loneliness",
+        "I miss people",
+        "No social life",
+        "Feeling disconnected",
+        "Alone in the world",
+        "I need someone to talk to",
+        "Feeling left out"
+      ],
+      "responses": [
+        "Loneliness can be really painful. Consider reaching out to a friend, family member, or joining a community group.",
+        "It's okay to feel lonely sometimes. Try connecting with others through hobbies or online communities.",
+        "You're not alone in feeling this way. Small connections can make a big difference.",
+        "Loneliness is hard. What kind of connections are you missing right now?",
+        "Even in isolation, you can find ways to connect. Online forums or local groups might help.",
+        "Feeling lonely doesn't mean you're alone. Many people feel this way; reaching out can change that."
+      ]
+    },
+    {
+      "tag": "anger",
+      "patterns": [
+        "I feel angry",
+        "I'm so mad",
+        "I can't control my anger",
+        "Feeling furious",
+        "I'm pissed off",
+        "Angry all the time",
+        "Rage",
+        "I want to scream",
+        "Frustrated",
+        "Irritated",
+        "Out of control",
+        "Hate everything"
+      ],
+      "responses": [
+        "Anger is a valid emotion. Try deep breathing or stepping away to cool down before reacting.",
+        "It's okay to feel angry. Channel that energy into something positive, like exercise or journaling.",
+        "When anger builds, pause and identify what's triggering it. You're in control of your responses.",
+        "Anger can be intense. What happened that made you feel this way?",
+        "Feeling angry is normal. Consider physical activity to release that energy safely.",
+        "Anger often masks other feelings. Exploring what's underneath can help."
+      ]
+    },
+    {
+      "tag": "sleep",
+      "patterns": [
+        "I can't sleep",
+        "Insomnia",
+        "Trouble sleeping",
+        "Can't fall asleep",
+        "Wake up at night",
+        "Bad dreams",
+        "Sleep issues",
+        "Not resting",
+        "Exhausted but can't sleep",
+        "Sleep deprivation",
+        "Nightmares",
+        "Restless sleep"
+      ],
+      "responses": [
+        "Sleep issues can be frustrating. Try a consistent bedtime routine and avoid screens before bed.",
+        "If sleep is elusive, consider relaxation techniques like progressive muscle relaxation.",
+        "Poor sleep affects everything. If it persists, talking to a doctor might help.",
+        "Trouble sleeping is common. What do you think is keeping you awake?",
+        "Consider creating a calming pre-bed ritual, like reading or gentle stretching.",
+        "Sleep deprivation can worsen mental health. Prioritizing rest is important."
+      ]
+    }
+  ]
+}
