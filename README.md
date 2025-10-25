@@ -2,17 +2,21 @@
 
 A web-based chatbot designed to provide empathetic mental health support. It uses natural language processing (NLP) with a TensorFlow model for intent classification and Google Gemini AI for generating compassionate responses. The chatbot addresses common mental health concerns like stress, anxiety, depression, loneliness, anger, and sleep issues.
 
-**Important Disclaimer:** This chatbot is for educational and informational purposes only. It is not a substitute for professional mental health care. If you're experiencing a crisis, please contact emergency services or a mental health professional immediately.
+**Important Disclaimer:** This chatbot is for educational purposes only and is not a substitute for professional mental health care. If you're in crisis, please contact:
+- National Suicide Prevention Lifeline: 91-9820466726
+- Crisis Text Line: Text HOME to 741741
+- Emergency Services: 112
 
 ## Features
 
-- **Intent Recognition:** Classifies user messages into mental health-related intents using a pre-trained TensorFlow model.
 - **Empathetic Responses:** Leverages Google Gemini API to generate supportive, validating responses with coping strategies.
-- **Web Interface:** Simple Flask-based web app with a chat interface (index.html).
-- **Fallback Mechanism:** Uses rule-based responses from intents.json if the AI API fails.
-- **Safety Focus:** Includes disclaimers and encourages seeking professional help.
+- **Web Interface:** Simple Flask-based web app with a home page for language selection and a chat interface.
+- **Language Support:** Supports both English and Hinglish (mix of Hindi and English) for broader accessibility.
+- **Conversation Memory:** Maintains conversation history for context-aware responses.
+- **Restart Functionality:** Allows users to restart the conversation and clear history.
+- **Dark Mode Toggle:** Includes a theme toggle for better user experience.
 - **Supported Intents:** Greeting, goodbye, thanks, stress, anxiety, depression, loneliness, anger, sleep issues.
-
+- **Safety Focus:** Includes disclaimers and encourages seeking professional help.
 ## Project Structure
 
 - `app.py`: Main Flask application with chatbot logic.
@@ -21,6 +25,7 @@ A web-based chatbot designed to provide empathetic mental health support. It use
 - `intents.json`: Training data with patterns and responses for intents.
 - `chatbot_model.h5`: Pre-trained model file.
 - `words.pkl`, `classes.pkl`: Pickled vocabulary and class labels.
+- `templates/home.html`: HTML template for the home page with language selection.
 - `templates/index.html`: HTML template for the chat interface.
 - `requirements.txt`: Python dependencies.
 - `generate_pickles.py`: Utility to generate pickle files (if needed).
@@ -70,12 +75,15 @@ A web-based chatbot designed to provide empathetic mental health support. It use
    ```
    python app.py
    ```
-   The server starts at `http://0.0.0.0:5000` (or `http://localhost:5000`).
+   The server starts at `http://0.0.0.0:8080` (or `http://localhost:8080`).
 
 2. **Access the Chatbot:**
-   Open your browser and navigate to `http://localhost:5000`.
+   Open your browser and navigate to `http://localhost:8080`.
+   - On the home page, select your preferred language (English or Hinglish).
+   - Proceed to the chat interface.
    - Type messages in the chat interface.
-   - The bot responds with empathetic support.
+   - The bot responds with empathetic support in the selected language.
+   - Use the "Restart" button to clear conversation history and start over.
    - Use commands like "quit", "exit", or "bye" to end the conversation.
 
 3. **API Usage:**
@@ -83,6 +91,7 @@ A web-based chatbot designed to provide empathetic mental health support. It use
      Send JSON: `{"message": "user input"}`
      Response: `{"response": "bot reply", "status": "success"}`
    - **Get Response (GET `/get?msg=user input`):** Simple query parameter for responses.
+   - **Restart Endpoint (POST `/restart`):** Clears conversation history.
 
 ## Training the Model
 
@@ -106,7 +115,7 @@ The model is a neural network for intent classification based on bag-of-words fe
 - Relies on Google Gemini API (requires API key and may have rate limits).
 - Intent classification accuracy depends on training data quality.
 - Not suitable for clinical use; always direct users to professionals.
-- Handles English only.
+- Supports English and Hinglish only.
 
 ## Contributing
 
