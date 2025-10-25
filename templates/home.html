@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Support Chatbot</title>
+    <style>
+        :root {
+            --bg-gradient-light: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            --bg-gradient-dark: linear-gradient(135deg, #1a1a2e, #16213e);
+            --card-bg-light: white;
+            --card-bg-dark: #2a2a3e;
+            --header-bg-light: linear-gradient(45deg, #2196f3, #4caf50);
+            --header-bg-dark: linear-gradient(45deg, #0f4c75, #3282b8);
+            --text-light: #333;
+            --text-dark: #e0e0e0;
+            --button-bg-light: linear-gradient(45deg, #2196f3, #4caf50);
+            --button-bg-dark: linear-gradient(45deg, #0f4c75, #3282b8);
+            --button-hover-light: linear-gradient(45deg, #1976d2, #388e3c);
+            --button-hover-dark: linear-gradient(45deg, #0d4a5f, #256a9e);
+            --disclaimer-bg-light: #fff3cd;
+            --disclaimer-bg-dark: #3e2723;
+            --disclaimer-border-light: #ffeaa7;
+            --disclaimer-border-dark: #5d4037;
+            --disclaimer-text-light: #856404;
+            --disclaimer-text-dark: #d7ccc8;
+            --shadow-light: rgba(0, 0, 0, 0.2);
+            --shadow-dark: rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-gradient-light);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            transition: background 0.3s ease;
+        }
+
+        body.dark-mode {
+            background: var(--bg-gradient-dark);
+        }
+
+        .home-container {
+            background-color: var(--card-bg-light);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px var(--shadow-light);
+            width: 100%;
+            max-width: 600px;
+            padding: 40px;
+            text-align: center;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        body.dark-mode .home-container {
+            background-color: var(--card-bg-dark);
+            box-shadow: 0 15px 35px var(--shadow-dark);
+        }
+
+        .home-header {
+            background: var(--header-bg-light);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        body.dark-mode .home-header {
+            background: var(--header-bg-dark);
+        }
+
+        .home-header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .home-header p {
+            margin: 10px 0 0 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .language-selection {
+            margin-bottom: 30px;
+        }
+
+        .language-selection h2 {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        body.dark-mode .language-selection h2 {
+            color: var(--text-dark);
+        }
+
+        .language-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .language-button {
+            padding: 15px 30px;
+            background: var(--button-bg-light);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: transform 0.2s ease, background 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            min-width: 150px;
+        }
+
+        body.dark-mode .language-button {
+            background: var(--button-bg-dark);
+        }
+
+        .language-button:hover {
+            transform: scale(1.05);
+            background: var(--button-hover-light);
+        }
+
+        body.dark-mode .language-button:hover {
+            background: var(--button-hover-dark);
+        }
+
+        .disclaimer {
+            background: var(--disclaimer-bg-light);
+            border: 1px solid var(--disclaimer-border-light);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 14px;
+            color: var(--disclaimer-text-light);
+            transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark-mode .disclaimer {
+            background: var(--disclaimer-bg-dark);
+            border-color: var(--disclaimer-border-dark);
+            color: var(--disclaimer-text-dark);
+        }
+
+        .disclaimer ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .disclaimer strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .home-container {
+                margin: 10px;
+                padding: 30px 20px;
+                max-width: 95%;
+            }
+            .home-header {
+                padding: 20px;
+            }
+            .home-header h1 {
+                font-size: 1.5rem;
+            }
+            .language-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .language-button {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .home-container {
+                border-radius: 15px;
+                padding: 20px 15px;
+            }
+            .home-header {
+                border-radius: 10px;
+                padding: 15px;
+            }
+            .home-header h1 {
+                font-size: 1.3rem;
+            }
+            .language-button {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="home-container">
+        <div class="home-header">
+            <h1>Mental Health Support Chatbot</h1>
+            <p>Your compassionate AI companion for mental wellness</p>
+            <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙</button>
+        </div>
+
+        <div class="language-selection">
+            <h2>Choose Your Language</h2>
+            <div class="language-buttons">
+                <a href="/chat/english" class="language-button">English</a>
+                <a href="/chat/hinglish" class="language-button">Hinglish</a>
+            </div>
+        </div>
+
+        {{ disclaimer|safe }}
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.getElementById('theme-toggle');
+            const isDark = body.classList.toggle('dark-mode');
+            themeToggle.textContent = isDark ? '☀️' : '🌙';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        // Load theme on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeToggle = document.getElementById('theme-toggle');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeToggle.textContent = '☀️';
+            } else {
+                themeToggle.textContent = '🌙';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -20,13 +20,24 @@
         "Hello there",
         "Hi everyone",
         "Hey buddy",
-        "Hello friend"
+        "Hello friend",
+        "Hi kaise ho",
+        "Namaste",
+        "Hello ji",
+        "Hey kaise hai",
+        "Good morning ji",
+        "Hi everyone yahan",
+        "Hey buddy kaise",
+        "Hello friend kaise ho"
       ],
       "responses": [
         "Hey :-)",
         "Hello, thanks for visiting",
         "Hi there, what can I do for you?",
-        "Hi there, how can I help?"
+        "Hi there, how can I help?",
+        "Namaste! Main yahan hoon aapki help karne ke liye.",
+        "Hello ji, aap kaise hain?",
+        "Hey, thanks for reaching out. Kya main aapki madad kar sakta hoon?"
       ]
     },
     {
@@ -45,12 +56,22 @@
         "Have a good day",
         "Until next time",
         "Adios",
-        "Ciao"
+        "Ciao",
+        "Bye ji",
+        "Phir milte hain",
+        "Take care ji",
+        "Good night",
+        "Shubh ratri",
+        "Allah hafiz",
+        "Khuda hafiz"
       ],
       "responses": [
         "See you later, thanks for visiting",
         "Have a nice day",
-        "Bye! Come back again soon."
+        "Bye! Come back again soon.",
+        "Phir milte hain, dhyaan rakhna apna.",
+        "Take care ji, aapki sehat ka khayal rakhiye.",
+        "Shubh ratri, acchi neend lijiye."
       ]
     },
     {
@@ -100,7 +121,18 @@
         "I have stress",
         "Feeling stressed",
         "Under stress",
-        "Stressed about everything"
+        "Stressed about everything",
+        "Main stressed hoon",
+        "Bahut pressure hai",
+        "Overwhelmed feel kar raha hoon",
+        "Work se stressed hoon",
+        "Sab kuch stress de raha hai",
+        "Pressure handle nahi kar pa raha",
+        "Stress mar raha hai",
+        "Plate pe bahut kuch hai",
+        "Pressured feel kar raha hoon",
+        "Life stressful hai",
+        "Work se overwhelmed hoon"
       ],
       "responses": [
         "I understand stress can be challenging. Try taking deep breaths and breaking tasks into smaller steps.",
@@ -108,7 +140,13 @@
         "When feeling stressed, try mindfulness exercises or going for a short walk.",
         "Stress can feel overwhelming. What specific things are causing you stress right now?",
         "It's normal to feel stressed sometimes. Consider prioritizing your tasks and delegating if possible.",
-        "Try progressive muscle relaxation: Tense and release each muscle group to release tension."
+        "Try progressive muscle relaxation: Tense and release each muscle group to release tension.",
+        "Main samajhta hoon stress challenging hai. Deep breaths lijiye aur tasks ko chhote steps mein todiye.",
+        "Stress tough hai. Breaks lijiye aur self-care karo.",
+        "Jab stressed feel karo, mindfulness exercises ya chhoti walk try karo.",
+        "Stress overwhelming lag raha hai. Kya specific cheezein aapko stress de rahi hain?",
+        "Kabhi kabhi stressed feel karna normal hai. Tasks ko prioritize karo aur delegate karo agar possible ho.",
+        "Progressive muscle relaxation try karo: Har muscle group ko tense aur release karo."
       ]
     },
     {

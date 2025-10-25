@@ -148,7 +148,7 @@
         .bot-message {
             background: var(--message-bg-bot-light);
             color: white;
-            border-bottom-left-radius: 5px;
+            border-bottom-left-radius: 5px
         }
 
         body.dark-mode .bot-message {
@@ -334,11 +334,17 @@
 <body>
     <div class="chat-container">
         <div class="chat-header">
-            <h2>Mental Health Support Chatbot</h2>
+            <h2>Mental Health Support Chatbot (English & Hinglish)</h2>
             <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙</button>
         </div>
         <div class="chat-messages" id="chat-messages">
-            <div class="message bot-message">Hello! I'm here to support you. How are you feeling today?</div>
+            <div class="message bot-message" id="initial-message">
+                {% if language == 'hinglish' %}
+                    Namaste! Main aapki madad karne ke liye yahan hoon. Aaj aap kaise feel kar rahe hain?
+                {% else %}
+                    Hello! I'm here to support you. How are you feeling today?
+                {% endif %}
+            </div>
         </div>
         <div class="typing-indicator" id="typing-indicator">Bot is typing...</div>
         <div class="chat-input">
@@ -364,6 +370,7 @@
 
             // Send message to server
             try {
+                console.log('Sending message to /chat'); // Debug log
                 const response = await fetch('/chat', {
                     method: 'POST',
                     headers: {
@@ -371,6 +378,7 @@
                     },
                     body: JSON.stringify({ message: message }),
                 });
+                console.log('Response received:', response); // Debug log
                 const data = await response.json();
                 hideTypingIndicator();
                 addMessage(data.response, 'bot-message');
@@ -423,7 +431,8 @@
 
             // Clear UI
             const chatMessages = document.getElementById('chat-messages');
-            chatMessages.innerHTML = '<div class="message bot-message">Hello! I\'m here to support you. How are you feeling today?</div>';
+            const initialMessage = document.getElementById('initial-message').textContent;
+            chatMessages.innerHTML = `<div class="message bot-message">${initialMessage}</div>`;
             chatMessages.scrollTop = chatMessages.scrollHeight;
             document.getElementById('user-input').value = '';
             hideTypingIndicator();

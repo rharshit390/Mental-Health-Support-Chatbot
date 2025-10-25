@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, session
+from flask import Flask, render_template, request, jsonify, session, redirect, url_for
 import random
 import json
 import pickle
@@ -9,6 +9,7 @@ from tensorflow.keras.models import load_model
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
+from langdetect import detect
 
 # Download NLTK data
 nltk.download('punkt')
@@ -88,11 +89,47 @@ def get_response(ints, intents_json):
     
     return result
 
+def detect_language(msg):
+    """Detect the language of the message"""
+    try:
+        lang = detect(msg)
+        return lang
+    except:
+        return 'en' 
+
 def chatbot_response(msg, history=None):
     """Generate chatbot response using Gemini API"""
     try:
         gemini_model = genai.GenerativeModel('gemini-2.5-flash')
-        base_prompt = f"""You are a compassionate mental health support chatbot. Respond to the user's message: '{msg}' with empathy, validation, and helpful suggestions.
+        
+        session_lang = session.get('language', 'english')
+        print(f"Session language: {session_lang}") 
+        if session_lang == 'english':
+            is_hinglish = False
+        elif session_lang == 'hinglish':
+            is_hinglish = True
+        else:
+    
+            lang = detect_language(msg)
+            is_hinglish = lang == 'hi' or 'hi' in msg.lower() or any(word in msg.lower() for word in ['kaise', 'hai', 'hoon', 'raha', 'rahin', 'ji', 'namaste', 'dhyaan', 'sehat'])
+
+        if is_hinglish:
+            base_prompt = f"""You are a compassionate mental health support chatbot. Respond to the user's Hinglish message: '{msg}' with empathy, validation, and helpful suggestions in Hinglish (mix of Hindi and English).
+
+Guidelines:
+- Validate their feelings: Acknowledge emotions without judgment.
+- Use active listening: Reflect back what they said to show understanding.
+- Ask open-ended questions: Encourage deeper sharing if appropriate.
+- Suggest coping strategies: Offer simple, evidence-based techniques like deep breathing, mindfulness, or self-care.
+- Emphasize self-compassion: Remind them to be kind to themselves.
+- Avoid diagnosis or medical advice: This is not professional therapy.
+- Always remind: Suggest seeking professional help for serious issues.
+- Keep responses concise, caring, and supportive (under 150 words).
+- Respond in Hinglish: Mix Hindi and English naturally, e.g., "Main samajhta hoon ki aap stressed feel kar rahe hain."
+
+End with a caring sign-off if suitable."""
+        else:
+            base_prompt = f"""You are a compassionate mental health support chatbot. Respond to the user's message: '{msg}' with empathy, validation, and helpful suggestions.
 
 Guidelines:
 - Validate their feelings: Acknowledge emotions without judgment.
@@ -116,7 +153,7 @@ End with a caring sign-off if suitable."""
         return response.text.strip()
     except Exception as e:
         print(f"Gemini API error: {e}")
-        # Fallback to original TensorFlow model
+        
         if not model_loaded:
             return "Chatbot model is not loaded. Please train the model first."
 
@@ -124,7 +161,7 @@ End with a caring sign-off if suitable."""
         res = get_response(ints, intents)
         return res
 
-# Add safety disclaimer
+
 SAFETY_DISCLAIMER = """
 <div class="disclaimer">
     <strong>Important Disclaimer:</strong> This chatbot is for educational purposes only and is not a substitute for professional mental health care. If you're in crisis, please contact:
@@ -138,7 +175,16 @@ SAFETY_DISCLAIMER = """
 
 @app.route("/")
 def home():
-    return render_template("index.html", disclaimer=SAFETY_DISCLAIMER)
+    return render_template("home.html", disclaimer=SAFETY_DISCLAIMER)
+
+@app.route("/chat/<lang>")
+def chat(lang):
+    if lang not in ['english', 'hinglish']:
+        return redirect(url_for('home'))
+    session['language'] = lang
+    print(f"Setting session language to: {lang}")  
+    session.modified = True 
+    return render_template("index.html", disclaimer=SAFETY_DISCLAIMER, language=lang)
 
 @app.route("/get")
 def get_bot_response():
@@ -157,6 +203,7 @@ def get_bot_response():
 @app.route("/chat", methods=["POST"])
 def chat_api():
     """API endpoint for chatbot"""
+    print("Chat API called")  
     data = request.get_json()
     user_message = data.get('message', '')
 

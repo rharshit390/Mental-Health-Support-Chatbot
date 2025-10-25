@@ -1,0 +1,4 @@
+- [x] Modify chatbot_response function in app.py to prioritize session['language'] over automatic language detection
+- [x] If session['language'] == 'english', always use English prompt
+- [x] If session['language'] == 'hinglish', use Hinglish prompt or detection
+- [x] Test the fix by running the app and checking responses (app is running on http://127.0.0.1:8080)
