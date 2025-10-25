@@ -2,11 +2,6 @@
 
 A web-based chatbot designed to provide empathetic mental health support. It uses natural language processing (NLP) with a TensorFlow model for intent classification and Google Gemini AI for generating compassionate responses. The chatbot addresses common mental health concerns like stress, anxiety, depression, loneliness, anger, and sleep issues.
 
-**Important Disclaimer:** This chatbot is for educational purposes only and is not a substitute for professional mental health care. If you're in crisis, please contact:
-- National Suicide Prevention Lifeline: 91-9820466726
-- Crisis Text Line: Text HOME to 741741
-- Emergency Services: 112
-
 ## Features
 
 - **Empathetic Responses:** Leverages Google Gemini API to generate supportive, validating responses with coping strategies.
